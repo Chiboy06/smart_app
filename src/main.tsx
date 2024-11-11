@@ -2,9 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
-import Departments from './components/Departments.tsx'
 import { BrowserRouter, createBrowserRouter } from 'react-router-dom'
 import Dashboard from './components/Dashboard.tsx'
+import Department from './components/Departments.tsx'
 
 export const router = createBrowserRouter([
   {
@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/department',
-    element: <Departments/>
+    element: <Department/>
   },
 ])
 

@@ -43,7 +43,7 @@ export default function Dashboard({data, energyData}:any) {
   const chartConfig = {
     desktop: {
       label: "Steam plant",
-      color: "#2563eb",
+      color: "#",
     },
     mobile: {
       label: "Boiling plant",
@@ -80,7 +80,7 @@ export default function Dashboard({data, energyData}:any) {
           </Sheet>
           <div className="ml-auto flex items-center gap-4">
             <div className="hidden md:block text-sm">
-              Account: Marlene Novak
+              Account: Energy Pilot
             </div>
           </div>
         </div>

@@ -80,14 +80,14 @@ export default function Department({totalConsumption, energy1Consumption, energy
             <Tabs defaultValue={selectedLocation} className="w-full sm:w-[400px]">
               <TabsList className="grid w-full grid-cols-3 bg-[#2a2a2a]">
                 <TabsTrigger value="apartments" onClick={() => setSelectedLocation("apartments")} className="data-[state=active]:bg-[#3a3a3a]">
-                  My apartments
+                  Departments
                 </TabsTrigger>
-                <TabsTrigger value="office" onClick={() => setSelectedLocation("office")} className="data-[state=active]:bg-[#3a3a3a]">
+                {/* <TabsTrigger value="office" onClick={() => setSelectedLocation("office")} className="data-[state=active]:bg-[#3a3a3a]">
                   Office
                 </TabsTrigger>
                 <TabsTrigger value="factory" onClick={() => setSelectedLocation("factory")} className="data-[state=active]:bg-[#3a3a3a]">
                   Factory
-                </TabsTrigger>
+                </TabsTrigger> */}
               </TabsList>
             </Tabs>
             <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-start">
