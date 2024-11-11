@@ -1,5 +1,3 @@
-'use client'
-
 import { BarChart3, Home, Menu, MoreHorizontal, ChevronDown, Settings, Power } from "lucide-react"
 import { useState } from "react"
 
@@ -10,7 +8,7 @@ import { Switch } from "../components/ui/switch"
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet"
 import { Slider } from "../components/ui/slider"
 
-export default function Component({totalConsumption, energy1Consumption, energy2Consumption}: any) {
+export default function Department({totalConsumption, energy1Consumption, energy2Consumption}: any) {
   const [selectedLocation, setSelectedLocation] = useState("office")
   const [greenEnergy, setGreenEnergy] = useState(true)
   const [relayStates, setRelayStates] = useState({
@@ -68,7 +66,7 @@ export default function Component({totalConsumption, energy1Consumption, energy2
             </nav>
             <div className="ml-auto flex items-center gap-4">
               <Button variant="ghost" size="sm" className="text-[#7a8c8f]">
-                Account: Marlene Novak
+                Account: Energy Pilot
                 <ChevronDown className="ml-2 h-4 w-4" />
               </Button>
             </div>

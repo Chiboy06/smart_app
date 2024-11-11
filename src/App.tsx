@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 // import Dashboard from './components/da'
-import Departments from './components/Departments'
 import Dashboard from './components/Dashboard'
 import { useEffect, useState } from 'react';
+import Department from './components/Departments';
 
 // Define interfaces for our data structures
 //@ts-ignore
@@ -146,7 +146,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Dashboard data={data} energyData={energyData} />}/>
-      <Route path='/department' element={<Departments 
+      <Route path='/department' element={<Department 
       totalConsumption={totalConsumption}
       energy1Consumption={energy1Consumption}
       energy2Consumption={energy2Consumption}

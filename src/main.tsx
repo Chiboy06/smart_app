@@ -4,11 +4,12 @@ import './index.css'
 import App from './App.tsx'
 import Departments from './components/Departments.tsx'
 import { BrowserRouter, createBrowserRouter } from 'react-router-dom'
+import Dashboard from './components/Dashboard.tsx'
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Departments />
+    element: <Dashboard />
   },
   {
     path: '/department',
