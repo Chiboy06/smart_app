@@ -6,12 +6,14 @@ import Dashboard from './components/Dashboard'
 import { useEffect, useState } from 'react';
 
 // Define interfaces for our data structures
+//@ts-ignore
 interface EnergyDataItem {
   name: string;
   consumption: number;
   range: string;
 }
 
+//@ts-ignore
 interface WeeklyDataItem {
   day: string;
   value: number;
@@ -30,6 +32,7 @@ interface ApiItem {
   payload: ApiPayload;
 }
 
+//@ts-ignore
 interface ApiResponse {
   body: string | {
     items: ApiItem[];
@@ -41,7 +44,6 @@ interface ProcessedReading extends ApiPayload {
 }
 
 function App() {
-  const [currentTime, setCurrentTime] = useState<Date>(new Date())
   const [data, setData] = useState<ProcessedReading[]>([])
   const [energyData, setEnergyData] = useState<any>([]);
   const [totalConsumption, setTotalConsumption] = useState<any>();
@@ -59,7 +61,7 @@ function App() {
       let totalPower1 = 0;
       let totalCurrent2 = 0;
       let totalPower2 = 0;
-      let totalEnergyKWh = 0;
+      // let totalEnergyKWh = 0;
       const totalReadings = parsedBody.items.length;
       
       // Initialize variables for calculating total energy consumption in kWh
@@ -95,7 +97,7 @@ function App() {
       });
   
       // Calculate averages for power
-      const avgCurrent1 = totalCurrent1 / totalReadings;
+      // const avgCurrent1 = totalCurrent1 / totalReadings;
       const avgPower1 = totalPower1 / totalReadings;
       const avgPower2 = totalPower2 / totalReadings;
   

@@ -9,7 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 import { ChartConfig,ChartContainer, ChartTooltip, ChartTooltipContent } from "./ui/chart"
 import { EnergyTable } from "./EnergyTable"
-import { Energy, columns } from "./energyColumn"
+import { columns } from "./energyColumn"
 
 
 
