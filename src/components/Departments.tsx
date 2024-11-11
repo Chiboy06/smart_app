@@ -1,4 +1,4 @@
-import { Menu, MoreHorizontal, ChevronDown, Power } from "lucide-react"
+import { Menu, MoreHorizontal, Power } from "lucide-react"
 import { useState } from "react"
 
 import { Button } from "../components/ui/button"
@@ -6,7 +6,7 @@ import { Card, CardContent } from "../components/ui/card"
 import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Switch } from "../components/ui/switch"
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet"
-import { Slider } from "../components/ui/slider"
+// import { Slider } from "../components/ui/slider"
 import { NavLink } from "react-router-dom"
 
 export default function Department({totalConsumption, energy1Consumption, energy2Consumption}: any) {
@@ -45,19 +45,19 @@ export default function Department({totalConsumption, energy1Consumption, energy
             </SheetContent>
           </Sheet>
           <div className="flex w-full items-center gap-4">
-            <a href="/" className="flex items-center space-x-2">
-              <span className="text-lg font-bold sm:text-xl">Energy Dashboard</span>
-            </a>
+            <div className="flex items-center space-x-2">
+              <NavLink to={'/department'} className="text-lg font-bold sm:text-xl">Departments</NavLink>
+            </div>
             <nav className="hidden md:flex md:flex-1 md:justify-center">
             <NavLink to={"/"} className="text-sm font-medium">Dashboard</NavLink>
             <NavLink to={"/department"} className="text-sm font-medium">Department</NavLink>
             </nav>
-            <div className="ml-auto flex items-center gap-4">
+            {/* <div className="ml-auto flex items-center gap-4">
               <Button variant="ghost" size="sm" className="text-[#7a8c8f]">
                 Account: Energy Pilot
                 <ChevronDown className="ml-2 h-4 w-4" />
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>
@@ -81,10 +81,10 @@ export default function Department({totalConsumption, energy1Consumption, energy
             <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-start">
               <span className="text-sm">Green Energy</span>
               <Switch checked={greenEnergy} onCheckedChange={setGreenEnergy} />
-              <Button variant="outline" size="sm" className="text-white border-white/20">
+              {/* <Button variant="outline" size="sm" className="text-white border-white/20">
                 More filters
                 <ChevronDown className="ml-2 h-4 w-4" />
-              </Button>
+              </Button> */}
             </div>
           </div>
 
@@ -230,7 +230,7 @@ export default function Department({totalConsumption, energy1Consumption, energy
                       </Button>
                       <span className="capitalize">{department}</span>
                     </div>
-                    <div className="flex items-center space-x-2">
+                    {/* <div className="flex items-center space-x-2">
                       <span className="text-sm text-[#7a8c8f]">Power limit:</span>
                       <Slider
                         defaultValue={[50]}
@@ -239,7 +239,7 @@ export default function Department({totalConsumption, energy1Consumption, energy
                         className="w-[100px]"
                       />
                       <span className="text-sm text-[#7a8c8f] w-8">50%</span>
-                    </div>
+                    </div> */}
                   </div>
                 ))}
               </div>

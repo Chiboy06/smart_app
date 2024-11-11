@@ -6,7 +6,7 @@ import { Button } from "./ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { Switch } from "./ui/switch"
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+import { Bar, BarChart, XAxis, YAxis } from "recharts"
 import { ChartConfig,ChartContainer, ChartTooltip, ChartTooltipContent } from "./ui/chart"
 import { EnergyTable } from "./EnergyTable"
 import { columns } from "./energyColumn"
@@ -103,8 +103,8 @@ export default function Dashboard({data, energyData}:any) {
           </div>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <Card className="col-span-full lg:col-span-2 bg-[#253234] border-none">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full overflow-hidden">
+          <Card className="col-span-full lg:col-span-2 w-full bg-[#253234] border-none">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-base font-medium">Total energy consumption</CardTitle>
               {/* <Button variant="outline" size="sm" className="h-8 text-xs bg-transparent border-[#7a8c8f]/20">
@@ -114,17 +114,17 @@ export default function Dashboard({data, energyData}:any) {
             <CardContent>
               <ChartContainer
                 config={chartConfig}
-                className="min-h-[200px] w-full"
+                className="min-h-[200px] w-[60%]"
                 // className="h-[200px] sm:h-[200px] sm:w-96"
               >
-                <ResponsiveContainer width="100%" height='100%'>
+                {/* <ResponsiveContainer width="100%" height='100%'> */}
                   <BarChart data={energyData}>
                     <XAxis dataKey="name"/>
                     <YAxis />
                     <Bar dataKey="consumption" fill="var(--color-energy)" radius={[4, 4, 0, 0]} />
                     <ChartTooltip content={<ChartTooltipContent />} />
                   </BarChart>
-                </ResponsiveContainer>
+                {/* </ResponsiveContainer> */}
               </ChartContainer>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-4">
                 {/* @ts-ignore */}
@@ -144,7 +144,7 @@ export default function Dashboard({data, energyData}:any) {
             </CardContent>
           </Card>
 
-          <Card className="bg-[#253234] border-none">
+          <Card className="bg-[#253234] border-none w-[90%]">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-base font-medium">Green connections</CardTitle>
               <Button variant="ghost" size="icon" className="h-8 w-8">
@@ -171,7 +171,7 @@ export default function Dashboard({data, energyData}:any) {
             </CardContent>
           </Card>
 
-          <Card className="bg-[#253234] border-none">
+          <Card className="bg-[#253234] border-none w-[90%]">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-base font-medium">Recommendations</CardTitle>
               <Button variant="ghost" size="icon" className="h-8 w-8">
@@ -197,7 +197,7 @@ export default function Dashboard({data, energyData}:any) {
             </CardContent>
           </Card>
 
-          <Card className="bg-[#253234] border-none">
+          <Card className="bg-[#253234] border-none w-[90%]">
             <CardHeader className="flex flex-col items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-base font-medium">Tracking</CardTitle>
               <EnergyTable columns={columns} data={data}/>
@@ -211,7 +211,7 @@ export default function Dashboard({data, energyData}:any) {
             </CardContent>
           </Card>
 
-          <Card className="bg-[#253234] border-none">
+          <Card className="bg-[#253234] border-none w-[90%]">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-base font-medium">Detailed report</CardTitle>
               <Button variant="outline" size="sm" className="h-8 text-xs bg-transparent border-[#7a8c8f]/20">
@@ -236,7 +236,7 @@ export default function Dashboard({data, energyData}:any) {
             </CardContent>
           </Card>
 
-          <Card className="bg-[#253234] border-none">
+          <Card className="bg-[#253234] border-none w-[90%]">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-base font-medium">Green energy usage</CardTitle>
               <Button variant="outline" size="sm" className="h-8 text-xs bg-transparent border-[#7a8c8f]/20">
