@@ -10,13 +10,12 @@ import { Switch } from "../components/ui/switch"
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet"
 import { Slider } from "../components/ui/slider"
 
-export default function Component() {
+export default function Component({totalConsumption, energy1Consumption, energy2Consumption}: any) {
   const [selectedLocation, setSelectedLocation] = useState("office")
   const [greenEnergy, setGreenEnergy] = useState(true)
   const [relayStates, setRelayStates] = useState({
-    lighting: true,
-    airConditioning: true,
-    computers: true,
+    SteamPlant: true,
+    BoilerPlant: true,
   })
 
   const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -65,24 +64,6 @@ export default function Component() {
                 className="flex items-center px-4 py-2 text-sm font-medium transition-colors hover:text-[#4cd471]"
               >
                 Dashboard
-              </a>
-              <a
-                href="/apartments"
-                className="flex items-center px-4 py-2 text-sm font-medium text-[#7a8c8f] transition-colors hover:text-[#4cd471]"
-              >
-                My apartments
-              </a>
-              <a
-                href="/reporting"
-                className="flex items-center px-4 py-2 text-sm font-medium text-[#7a8c8f] transition-colors hover:text-[#4cd471]"
-              >
-                Reporting
-              </a>
-              <a
-                href="/settings"
-                className="flex items-center px-4 py-2 text-sm font-medium text-[#7a8c8f] transition-colors hover:text-[#4cd471]"
-              >
-                Settings
               </a>
             </nav>
             <div className="ml-auto flex items-center gap-4">
@@ -136,7 +117,7 @@ export default function Component() {
                 <CardContent className="p-4">
                   <div className="space-y-2">
                     <div className="text-sm font-medium text-[#7a8c8f]">Total</div>
-                    <div className="text-4xl font-bold text-white">327-519</div>
+                    <div className="text-4xl font-bold text-white">{totalConsumption}</div>
                     <div className="text-sm text-[#7a8c8f]">kWh per month</div>
                   </div>
                 </CardContent>
@@ -177,8 +158,8 @@ export default function Component() {
               <Card className="bg-[#253234] border-none">
                 <CardContent className="flex items-center justify-between p-4">
                   <div className="space-y-1">
-                    <div className="text-sm font-medium text-[#7a8c8f]">Lighting</div>
-                    <div className="text-2xl font-bold">52-71</div>
+                    <div className="text-sm font-medium text-[#7a8c8f]">Steam plant</div>
+                    <div className="text-2xl font-bold">{energy1Consumption}</div>
                     <div className="text-xs text-[#7a8c8f]">kWh per month</div>
                   </div>
                   <Button variant="ghost" size="icon" className="text-[#7a8c8f]">
@@ -190,8 +171,8 @@ export default function Component() {
               <Card className="bg-[#253234] border-none">
                 <CardContent className="flex items-center justify-between p-4">
                   <div className="space-y-1">
-                    <div className="text-sm font-medium text-[#7a8c8f]">Air Conditioning</div>
-                    <div className="text-2xl font-bold">49-85</div>
+                    <div className="text-sm font-medium text-[#7a8c8f]">Boiler plant</div>
+                    <div className="text-2xl font-bold">{energy2Consumption}</div>
                     <div className="text-xs text-[#7a8c8f]">kWh per month</div>
                   </div>
                   <Button variant="ghost" size="icon" className="text-[#7a8c8f]">
@@ -200,7 +181,7 @@ export default function Component() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-[#253234] border-none">
+              {/* <Card className="bg-[#253234] border-none">
                 <CardContent className="flex items-center justify-between p-4">
                   <div className="space-y-1">
                     <div className="text-sm font-medium text-[#7a8c8f]">Computer</div>
@@ -211,7 +192,7 @@ export default function Component() {
                     <MoreHorizontal className="h-4 w-4" />
                   </Button>
                 </CardContent>
-              </Card>
+              </Card> */}
             </div>
           </div>
 
