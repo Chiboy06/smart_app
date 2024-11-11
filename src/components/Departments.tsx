@@ -1,4 +1,4 @@
-import { BarChart3, Home, Menu, MoreHorizontal, ChevronDown, Settings, Power } from "lucide-react"
+import { Menu, MoreHorizontal, ChevronDown, Power } from "lucide-react"
 import { useState } from "react"
 
 import { Button } from "../components/ui/button"
@@ -7,6 +7,7 @@ import { Tabs, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Switch } from "../components/ui/switch"
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet"
 import { Slider } from "../components/ui/slider"
+import { NavLink } from "react-router-dom"
 
 export default function Department({totalConsumption, energy1Consumption, energy2Consumption}: any) {
   const [selectedLocation, setSelectedLocation] = useState("office")
@@ -37,18 +38,9 @@ export default function Department({totalConsumption, energy1Consumption, energy
             </SheetTrigger>
             <SheetContent side="left" className="w-[240px] sm:w-[300px] bg-[#1c1c1c] text-white">
               <nav className="flex flex-col gap-4">
-                <a href="/" className="flex items-center gap-2 text-lg font-semibold">
-                  <Home className="h-5 w-5" /> Dashboard
-                </a>
-                <a href="/apartments" className="flex items-center gap-2 text-lg font-semibold">
-                  My apartments
-                </a>
-                <a href="/reporting" className="flex items-center gap-2 text-lg font-semibold">
-                  <BarChart3 className="h-5 w-5" /> Reporting
-                </a>
-                <a href="/settings" className="flex items-center gap-2 text-lg font-semibold">
-                  <Settings className="h-5 w-5" /> Settings
-                </a>
+              <NavLink to={"/"} className="text-sm font-medium">Dashboard</NavLink>
+              <NavLink to={"/department"} className="text-sm font-medium">Department</NavLink>
+
               </nav>
             </SheetContent>
           </Sheet>
@@ -57,12 +49,8 @@ export default function Department({totalConsumption, energy1Consumption, energy
               <span className="text-lg font-bold sm:text-xl">Energy Dashboard</span>
             </a>
             <nav className="hidden md:flex md:flex-1 md:justify-center">
-              <a
-                href="/"
-                className="flex items-center px-4 py-2 text-sm font-medium transition-colors hover:text-[#4cd471]"
-              >
-                Dashboard
-              </a>
+            <NavLink to={"/"} className="text-sm font-medium">Dashboard</NavLink>
+            <NavLink to={"/department"} className="text-sm font-medium">Department</NavLink>
             </nav>
             <div className="ml-auto flex items-center gap-4">
               <Button variant="ghost" size="sm" className="text-[#7a8c8f]">

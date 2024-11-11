@@ -10,6 +10,7 @@ import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 import { ChartConfig,ChartContainer, ChartTooltip, ChartTooltipContent } from "./ui/chart"
 import { EnergyTable } from "./EnergyTable"
 import { columns } from "./energyColumn"
+import { NavLink } from "react-router-dom"
 
 
 
@@ -43,7 +44,7 @@ export default function Dashboard({data, energyData}:any) {
   const chartConfig = {
     desktop: {
       label: "Steam plant",
-      color: "#",
+      color: "#008000",
     },
     mobile: {
       label: "Boiling plant",
@@ -61,8 +62,10 @@ export default function Dashboard({data, energyData}:any) {
             <Box className="h-6 w-6" />
           </a>
           <nav className="hidden md:flex md:flex-1 md:justify-start md:gap-6 md:pl-6">
-            <a href="/" className="text-sm font-medium text-white">Dashboard</a>
-            <a href="/department" className="text-sm font-medium text-[#7a8c8f]">Departments</a>
+          <NavLink to={"/"} className="text-sm font-medium">Dashboard</NavLink>
+          <NavLink to={"/department"} className="text-sm font-medium">Department</NavLink>
+            {/* <a href="/" className="text-sm font-medium text-white">Dashboard</a>
+            <a href="/department" className="text-sm font-medium text-[#7a8c8f]">Departments</a> */}
           </nav>
           <Sheet>
             <SheetTrigger asChild>
@@ -73,8 +76,12 @@ export default function Dashboard({data, energyData}:any) {
             </SheetTrigger>
             <SheetContent side="left" className="w-[240px] bg-[#1c1c1c] text-white">
               <nav className="flex flex-col gap-4">
-                <a href="/" className="text-sm font-medium">Dashboard</a>
-                <a href="/department" className="text-sm font-medium text-[#7a8c8f]">Departments</a>
+                <NavLink to={"/"} className="text-sm font-medium">Dashboard</NavLink>
+                <NavLink to={"/department"} className="text-sm font-medium">Department</NavLink>
+                {/* <Routes> */}
+                  {/* <Route path="/"  className="text-sm font-medium">Dashboard</a> */}
+                  {/* <Route path="/department" className="text-sm font-medium text-[#7a8c8f]">Departments</a> */}
+                {/* </Routes> */}
               </nav>
             </SheetContent>
           </Sheet>
@@ -100,9 +107,9 @@ export default function Dashboard({data, energyData}:any) {
           <Card className="col-span-full lg:col-span-2 bg-[#253234] border-none">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-base font-medium">Total energy consumption</CardTitle>
-              <Button variant="outline" size="sm" className="h-8 text-xs bg-transparent border-[#7a8c8f]/20">
+              {/* <Button variant="outline" size="sm" className="h-8 text-xs bg-transparent border-[#7a8c8f]/20">
                 Change module
-              </Button>
+              </Button> */}
             </CardHeader>
             <CardContent>
               <ChartContainer
