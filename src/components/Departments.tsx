@@ -9,12 +9,12 @@ import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet"
 // import { Slider } from "../components/ui/slider"
 import { NavLink } from "react-router-dom"
 
-export default function Department({totalConsumption, energy1Consumption, energy2Consumption}: any) {
-  const [selectedLocation, setSelectedLocation] = useState("office")
+export default function Department({totalConsumption, relay1, energy1Consumption, energy2Consumption}: any) {
+  const [selectedLocation, setSelectedLocation] = useState("Steam Boiler")
   const [greenEnergy, setGreenEnergy] = useState(true)
   const [relayStates, setRelayStates] = useState({
     Heater: true,
-    Boiler: true,
+    Boiler: relay1,
   })
 
   const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -229,6 +229,7 @@ export default function Department({totalConsumption, energy1Consumption, energy
                         <Power className="h-4 w-4" />
                       </Button>
                       <span className="capitalize">{department}</span>
+                      <span>{relayStates.Boiler}</span>
                     </div>
                     {/* <div className="flex items-center space-x-2">
                       <span className="text-sm text-[#7a8c8f]">Power limit:</span>

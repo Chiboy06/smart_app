@@ -6,6 +6,8 @@ import { BrowserRouter, createBrowserRouter } from 'react-router-dom'
 import Dashboard from './components/Dashboard.tsx'
 import Department from './components/Departments.tsx'
 // import { Toaster } from "../components/ui/sonner"
+import { Toaster } from "./components/ui/sonner"
+
 
 
 export const router = createBrowserRouter([
@@ -23,7 +25,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <App />
-      {/* <Toaster/> */}
+      <Toaster richColors position="top-center"/>
     </BrowserRouter>
   </StrictMode>,
 )

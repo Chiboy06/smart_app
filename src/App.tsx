@@ -4,7 +4,9 @@ import './App.css'
 import Dashboard from './components/Dashboard'
 import { useEffect, useState } from 'react';
 import Department from './components/Departments';
-import { toast } from 'react-hot-toast';
+// import { toast } from 'react-hot-toast';
+import { toast } from "sonner"
+
 
 // Define interfaces for our data structures
 //@ts-ignore
@@ -43,6 +45,8 @@ interface ApiResponse {
 interface ProcessedReading extends ApiPayload {
   timestamp: number | undefined;
 }
+const REFRESH_INTERVAL = 5000; // 5 seconds
+
 
 function App() {
   const [data, setData] = useState<ProcessedReading[]>([])
@@ -50,6 +54,7 @@ function App() {
   const [totalConsumption, setTotalConsumption] = useState<any>();
   const [energy1Consumption, setTotalConsumption1] = useState<any>();
   const [energy2Consumption, setTotalConsumption2] = useState<any>();
+  const [relay1, setRelay1] = useState<any>()
   const fetchData = async () => {
     try {
       // Fetch the response from the API
@@ -70,6 +75,7 @@ function App() {
       let cumulativeEnergyKWh = 0;  // To sum the energy consumption in kWh
       let energyConsumedPower1 = 0;
       let energyConsumedPower2 = 0;
+      let relay1=true;
 
       const CURRENT_THRESHOLD = 30;
       // let alertsTriggered:string = [];
@@ -79,15 +85,17 @@ function App() {
         // Accumulate currents and powers for averages
         if (item.payload.current1 > CURRENT_THRESHOLD) {
           // toast.error(`Warning:(${current1.toFixed(2)})`);
-          toast.error(`Warning: Current1 reading too high (${item.payload.current1.toFixed(2)}A)`, {
-            duration: 5000, // Optional: Set a custom duration
-            position: 'top-right', // Optional: Position of the toast
-          });
+          toast.error(`Boiler temperature slowly rising, schedule maintain in the next two hours to prevent further damage!!!`);
+          // toast.error(`Warning: Current1 reading too high (${item.payload.current1.toFixed(2)}A)`, {
+          //   duration: 5000, // Optional: Set a custom duration
+          //   position: 'top-right', // Optional: Position of the toast
+          // });
         }
         totalCurrent1 += item.payload.current1;
         totalPower1 += item.payload.power1;
         totalCurrent2 += item.payload.current2;
         totalPower2 += item.payload.power2;
+        relay1 += item.payload.relay1;
   
         // Calculate energy consumed for this reading (assuming `timestamp` is in seconds)
         const timestamp = parseInt(item.payload.timestamp);  // Convert timestamp to integer
@@ -112,6 +120,7 @@ function App() {
       const avgPower1 = totalPower1 / totalReadings;
       const avgPower2 = totalPower2 / totalReadings;
   
+      setRelay1(relay1);
     //   if (alertsTriggered.length > 0) {
     //     console.log("⚠️ ALERTS DETECTED:");
     //     alertsTriggered.forEach(alert => {
@@ -165,8 +174,15 @@ function App() {
   
   // UseEffect to call fetchData on component mount
   useEffect(() => {
+    // Fetch immediately on mount
     fetchData();
-  }, []);
+    
+    // Set up periodic fetching
+    const intervalId = setInterval(fetchData, REFRESH_INTERVAL);
+    
+    // Cleanup on unmount
+    return () => clearInterval(intervalId);
+  }, [fetchData]);
   return (
     <Routes>
       <Route path="/" element={<Dashboard data={data} energyData={energyData} />}/>
@@ -174,6 +190,7 @@ function App() {
       totalConsumption={totalConsumption}
       energy1Consumption={energy1Consumption}
       energy2Consumption={energy2Consumption}
+      relay1={relay1}
       />} />
     </Routes>
   )
