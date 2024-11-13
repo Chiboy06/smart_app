@@ -239,13 +239,13 @@ export default function Dashboard({data, energyData}:any) {
           <Card className="bg-[#253234] border-none w-[90%]">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-base font-medium">Green energy usage</CardTitle>
-              <Button variant="outline" size="sm" className="h-8 text-xs bg-transparent border-[#7a8c8f]/20">
+              {/* <Button variant="outline" size="sm" className="h-8 text-xs bg-transparent border-[#7a8c8f]/20">
                 Change
-              </Button>
+              </Button> */}
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="text-3xl font-bold">47%</div>
+                <div className="text-3xl font-bold">80%</div>
                 <div className="text-sm text-[#7a8c8f]">11AM — 3PM</div>
                 <div className="flex items-center justify-between gap-2">
                   {timeSlots.map((time, index) => (
