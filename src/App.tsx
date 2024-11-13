@@ -4,6 +4,7 @@ import './App.css'
 import Dashboard from './components/Dashboard'
 import { useEffect, useState } from 'react';
 import Department from './components/Departments';
+import { toast } from 'react-hot-toast';
 
 // Define interfaces for our data structures
 //@ts-ignore
@@ -69,10 +70,20 @@ function App() {
       let cumulativeEnergyKWh = 0;  // To sum the energy consumption in kWh
       let energyConsumedPower1 = 0;
       let energyConsumedPower2 = 0;
+
+      const CURRENT_THRESHOLD = 30;
+      // let alertsTriggered:string = [];
   
       // @ts-ignore
       parsedBody.items.forEach(item => {
         // Accumulate currents and powers for averages
+        if (item.payload.current1 > CURRENT_THRESHOLD) {
+          // toast.error(`Warning:(${current1.toFixed(2)})`);
+          toast.error(`Warning: Current1 reading too high (${item.payload.current1.toFixed(2)}A)`, {
+            duration: 5000, // Optional: Set a custom duration
+            position: 'top-right', // Optional: Position of the toast
+          });
+        }
         totalCurrent1 += item.payload.current1;
         totalPower1 += item.payload.power1;
         totalCurrent2 += item.payload.current2;
@@ -81,8 +92,8 @@ function App() {
         // Calculate energy consumed for this reading (assuming `timestamp` is in seconds)
         const timestamp = parseInt(item.payload.timestamp);  // Convert timestamp to integer
   
-        // If this is not the first reading, calculate time difference
-        if (previousTimestamp !== 0) {
+        // If this is not the first reading, calculat   e time difference
+        if (previousTimestamp !== 0 && timestamp >= previousTimestamp) {
           const timeDifferenceInHours = (timestamp - previousTimestamp) / 3600;  // Time difference in hours
   
           // Calculate energy in kWh for power1 and power2
@@ -101,6 +112,13 @@ function App() {
       const avgPower1 = totalPower1 / totalReadings;
       const avgPower2 = totalPower2 / totalReadings;
   
+    //   if (alertsTriggered.length > 0) {
+    //     console.log("⚠️ ALERTS DETECTED:");
+    //     alertsTriggered.forEach(alert => {
+    //         console.log(`${alert.timestamp}: ${alert.message}`);
+    //         alert(alert.message); // Browser alert
+    //     });
+    // }
       // Map to the readings (assuming each item contains these fields)
       // @ts-ignore
       const readings = parsedBody.items.map(item => ({
@@ -120,15 +138,21 @@ function App() {
       // Energy Data: Adding calculated averages to Steam Plant
       const energyDatas = [
         {
-          name: "Boiling Plant",
-          consumption: avgPower1,  // Assuming static data for Boiling Plant, you can calculate if needed
+          name: "BOILER",
+          consumption: avgPower1,  // Assuming static data for Boiler, you can calculate if needed
           range: "52-71",
         },
         {
-          name: "Steam Plant",
-          consumption: avgPower2,  // Assuming static data for Steam Plant, you can calculate if needed
+          name: "HEATER",
+          consumption: avgPower2,  // Assuming static data for heater, you can calculate if needed
+          range:  "79-112",
         }
       ];
+
+      // if (alertsTriggered.length > 0) {
+      //   // Assuming you have a state setter for alerts
+      //   setAlerts?.(alertsTriggered);
+      // }
   
       // Optionally, you can also log or use the total energy consumption for reporting
       console.log("Energy Consumption Data:", energyDatas);

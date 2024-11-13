@@ -13,8 +13,8 @@ export default function Department({totalConsumption, energy1Consumption, energy
   const [selectedLocation, setSelectedLocation] = useState("office")
   const [greenEnergy, setGreenEnergy] = useState(true)
   const [relayStates, setRelayStates] = useState({
-    SteamPlant: true,
-    BoilerPlant: true,
+    Heater: true,
+    Boiler: true,
   })
 
   const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -49,7 +49,7 @@ export default function Department({totalConsumption, energy1Consumption, energy
               <NavLink to={'/department'} className="text-lg font-bold sm:text-xl">Departments</NavLink>
             </div>
             <nav className="hidden md:flex md:flex-1 md:justify-center">
-            <NavLink to={"/"} className="text-sm font-medium">Dashboard</NavLink>
+            <NavLink to={"/"} className="text-sm font-medium px-3">Dashboard</NavLink>
             <NavLink to={"/department"} className="text-sm font-medium">Department</NavLink>
             </nav>
             {/* <div className="ml-auto flex items-center gap-4">
@@ -93,8 +93,8 @@ export default function Department({totalConsumption, energy1Consumption, energy
               <Card className="bg-[#253234] border-none">
                 <CardContent className="p-4">
                   <div className="space-y-2">
-                    <div className="text-sm font-medium text-[#7a8c8f]">Available energy</div>
-                    <div className="text-4xl font-bold text-[#4cd471]">83%</div>
+                    <div className="text-sm font-medium text-[#7a8c8f]"> COST PREDICTED</div>
+                    <div className="text-4xl font-bold text-[#4cd471]">$145</div>
                   </div>
                 </CardContent>
               </Card>
@@ -102,7 +102,7 @@ export default function Department({totalConsumption, energy1Consumption, energy
               <Card className="bg-[#253234] border-none">
                 <CardContent className="p-4">
                   <div className="space-y-2">
-                    <div className="text-sm font-medium text-[#7a8c8f]">Total</div>
+                    <div className="text-sm font-medium text-[#7a8c8f]">TOTAL POWER CONSUMPTION</div>
                     <div className="text-4xl font-bold text-white">{totalConsumption}</div>
                     <div className="text-sm text-[#7a8c8f]">kWh per month</div>
                   </div>
@@ -112,8 +112,8 @@ export default function Department({totalConsumption, energy1Consumption, energy
               <Card className="bg-[#253234] border-none">
                 <CardContent className="p-4">
                   <div className="space-y-2">
-                    <div className="font-medium">Run appliances after 8 PM</div>
-                    <p className="text-sm text-[#7a8c8f]">to reduce peak load.</p>
+                    <div className="font-medium">Run boiler after 9 PM</div>
+                    <p className="text-sm text-[#7a8c8f]">to minimize energy wastage.</p>
                     <div className="mt-2 flex items-center justify-between text-xs text-[#7a8c8f]">
                       <span>Analysis</span>
                       <span>5 min</span>
@@ -144,7 +144,7 @@ export default function Department({totalConsumption, energy1Consumption, energy
               <Card className="bg-[#253234] border-none">
                 <CardContent className="flex items-center justify-between p-4">
                   <div className="space-y-1">
-                    <div className="text-sm font-medium text-[#7a8c8f]">Steam plant</div>
+                    <div className="text-sm font-medium text-[#7a8c8f]">HEATER</div>
                     <div className="text-2xl font-bold">{energy1Consumption}</div>
                     <div className="text-xs text-[#7a8c8f]">kWh per month</div>
                   </div>
@@ -157,7 +157,7 @@ export default function Department({totalConsumption, energy1Consumption, energy
               <Card className="bg-[#253234] border-none">
                 <CardContent className="flex items-center justify-between p-4">
                   <div className="space-y-1">
-                    <div className="text-sm font-medium text-[#7a8c8f]">Boiler plant</div>
+                    <div className="text-sm font-medium text-[#7a8c8f]">Boiler </div>
                     <div className="text-2xl font-bold">{energy2Consumption}</div>
                     <div className="text-xs text-[#7a8c8f]">kWh per month</div>
                   </div>
@@ -216,7 +216,7 @@ export default function Department({totalConsumption, energy1Consumption, energy
           {/* New Relay Control Component */}
           <Card className="bg-[#253234] border-none">
             <CardContent className="p-4">
-              <h3 className="text-lg font-medium mb-4">Department Relay Control</h3>
+              <h3 className="text-lg font-medium mb-4">DEPARTMENT CONTROL</h3>
               <div className="space-y-4">
                 {Object.entries(relayStates).map(([department, isOn]) => (
                   <div key={department} className="flex items-center justify-between">

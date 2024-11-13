@@ -48,7 +48,7 @@ export function EnergyTable<TData, TValue>({
   
 
   return (
-    <div className="rounded-md border">
+    <div className="w-full">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (

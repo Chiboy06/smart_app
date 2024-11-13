@@ -16,22 +16,22 @@ export type Energy = {
 export const columns: ColumnDef<Energy>[] = [
   {
     accessorKey: "current1",
-    header: "Steam plant Current",
+    header: "HEATER CURRENT",
   },
   {
     accessorKey: "current2",
-    header: "Boiler plant",
+    header: "BOILER CURRENT",
   },
   {
     accessorKey: "power1",
-    header: "SP current",
+    header: "HT POWER",
   },
   {
     accessorKey: "power2",
-    header: "BP current",
+    header: "BR POWER",
   },
   {
     accessorKey: "timestamp",
-    header: "Time",
+    header: "TIME",
   },
 ]

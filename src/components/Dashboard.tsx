@@ -27,8 +27,8 @@ export default function Dashboard({data, energyData}:any) {
   }, [])
 
   // const energyData = [
-  //   { name: "Boiling Plant", consumption: 71, range: "52-71" },
-  //   { name: "Steam Plant", consumption: 37, range: "29-37" },
+  //   { name: "Boiler", consumption: 71, range: "52-71" },
+  //   { name: "heater ", consumption: 37, range: "29-37" },
   // ]
 
   const weeklyData = [
@@ -43,12 +43,12 @@ export default function Dashboard({data, energyData}:any) {
 
   const chartConfig = {
     desktop: {
-      label: "Steam plant",
-      color: "#008000",
+      label: "heater",
+      color: "#ffffff",
     },
     mobile: {
-      label: "Boiling plant",
-      color: "#60a5fa",
+      label: "Boiler",
+      color: "#ffffff",
     },
   } satisfies ChartConfig;
 
@@ -87,7 +87,7 @@ export default function Dashboard({data, energyData}:any) {
           </Sheet>
           <div className="ml-auto flex items-center gap-4">
             <div className="hidden md:block text-sm">
-              Account: Energy Pilot
+              ACCOUNT: ENERGY PILOT
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function Dashboard({data, energyData}:any) {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full overflow-hidden">
           <Card className="col-span-full lg:col-span-2 w-full bg-[#253234] border-none">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-base font-medium">Total energy consumption</CardTitle>
+              <CardTitle className="text-base font-medium">TOTAL ENERGY CONSUMPTION</CardTitle>
               {/* <Button variant="outline" size="sm" className="h-8 text-xs bg-transparent border-[#7a8c8f]/20">
                 Change module
               </Button> */}
@@ -114,14 +114,14 @@ export default function Dashboard({data, energyData}:any) {
             <CardContent>
               <ChartContainer
                 config={chartConfig}
-                className="min-h-[200px] w-[60%]"
+                className="min-h-[200px] h-[300px] w-[60%] text-white"
                 // className="h-[200px] sm:h-[200px] sm:w-96"
               >
                 {/* <ResponsiveContainer width="100%" height='100%'> */}
-                  <BarChart data={energyData}>
+                  <BarChart className="bg-white" data={energyData}>
                     <XAxis dataKey="name"/>
                     <YAxis />
-                    <Bar dataKey="consumption" fill="var(--color-energy)" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="consumption" fill="#000000" radius={[10, 10, 0, 0]} />
                     <ChartTooltip content={<ChartTooltipContent />} />
                   </BarChart>
                 {/* </ResponsiveContainer> */}
@@ -146,7 +146,7 @@ export default function Dashboard({data, energyData}:any) {
 
           <Card className="bg-[#253234] border-none w-[90%]">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-base font-medium">Green connections</CardTitle>
+              <CardTitle className="text-base font-medium">ACTIVE APPLIANCES</CardTitle>
               <Button variant="ghost" size="icon" className="h-8 w-8">
                 <MoreHorizontal className="h-4 w-4" />
               </Button>
@@ -154,8 +154,8 @@ export default function Dashboard({data, energyData}:any) {
             <CardContent>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm">Office</span>
-                  <span className="text-sm text-[#7a8c8f]">Connected</span>
+                  <span className="text-sm">USAGE ESTIMATE: 164.1KWh</span>
+                  <span className="text-sm text-[#7a8c8f]"></span>
                   <Switch defaultChecked />
                 </div>
                 <div className="aspect-square bg-[#2a2a2a] rounded-lg relative">
@@ -164,8 +164,8 @@ export default function Dashboard({data, energyData}:any) {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <div className="text-sm text-[#7a8c8f]">Available energy</div>
-                  <div className="text-2xl font-bold">83%</div>
+                  <div className="text-sm text-[#7a8c8f]">PREDICTED ESTIMATE</div>
+                  <div className="text-2xl font-bold">439 KW/h</div>
                 </div>
               </div>
             </CardContent>
@@ -173,7 +173,7 @@ export default function Dashboard({data, energyData}:any) {
 
           <Card className="bg-[#253234] border-none w-[90%]">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-base font-medium">Recommendations</CardTitle>
+              <CardTitle className="text-base font-medium">ALERTS</CardTitle>
               <Button variant="ghost" size="icon" className="h-8 w-8">
                 <MoreHorizontal className="h-4 w-4" />
               </Button>
@@ -187,8 +187,8 @@ export default function Dashboard({data, energyData}:any) {
                 <div className="text-xs text-[#7a8c8f] mt-2">Today recommendation</div>
               </div>
               <div className="rounded-lg bg-[#2a2a2a] p-4">
-                <div className="text-sm font-medium">Run appliances after 8 PM</div>
-                <p className="text-xs text-[#7a8c8f] mt-1">to reduce peak load.</p>
+                <div className="text-sm font-medium">Switch to renewable energy at 12pm</div>
+                <p className="text-xs text-[#7a8c8f] mt-1">to reduce peak load</p>
                 <div className="flex items-center justify-between mt-2 text-xs text-[#7a8c8f]">
                   <span>Analysis</span>
                   <span>5 min</span>
@@ -199,16 +199,16 @@ export default function Dashboard({data, energyData}:any) {
 
           <Card className="bg-[#253234] border-none w-[90%]">
             <CardHeader className="flex flex-col items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-base font-medium">Tracking</CardTitle>
+              <CardTitle className="text-base font-medium">TRACKING</CardTitle>
               <EnergyTable columns={columns} data={data}/>
             </CardHeader>
-            <CardContent>
+            {/* <CardContent>
               <div className="space-y-2">
                 <div className="text-sm text-[#7a8c8f]">Solar energy tomorrow</div>
                 <div className="text-3xl font-bold">5.7</div>
                 <div className="text-xs text-[#7a8c8f]">kWh</div>
               </div>
-            </CardContent>
+            </CardContent> */}
           </Card>
 
           <Card className="bg-[#253234] border-none w-[90%]">
