@@ -149,12 +149,12 @@ function App() {
         {
           name: "BOILER",
           consumption: avgPower1,  // Assuming static data for Boiler, you can calculate if needed
-          range: "52-71",
+          range: "20-80",
         },
         {
           name: "HEATER",
           consumption: avgPower2,  // Assuming static data for heater, you can calculate if needed
-          range:  "79-112",
+          range:  "10-90",
         }
       ];
 
